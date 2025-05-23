@@ -6,13 +6,6 @@ $password = getenv('MYSQLPASSWORD');
 $database = getenv('MYSQL_DATABASE');
 $port = getenv('MYSQLPORT');
 
-// Depuración: Mostrar los valores de las variables de entorno
-echo "Host: " . ($host ?: "No definido") . "<br>";
-echo "User: " . ($user ?: "No definido") . "<br>";
-echo "Password: " . ($password ?: "No definido") . "<br>";
-echo "Database: " . ($database ?: "No definido") . "<br>";
-echo "Port: " . ($port ?: "No definido") . "<br>";
-
 // Crear la conexión
 $conexion = new mysqli($host, $user, $password, $database, $port);
 
