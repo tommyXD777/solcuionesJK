@@ -1,0 +1,118 @@
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #111;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #b2babb ;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        /* Formulario de agregar producto */
+        .add-product-form {
+            background: #b2babb ;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        button {
+            background-color: #0067b8;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        button:hover {
+            background-color: #005aa3;
+        }
+        
+        /* Tabla de productos */
+        .products-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .products-table th, .products-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .products-table th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+        }
+        
+        .status-available {
+            color: #28a745;
+            font-weight: 600;
+        }
+        
+        .status-soldout {
+            color: #dc3545;
+            font-weight: 600;
+        }
+        
+        .status-toggle {
+            background: none;
+            border: none;
+            color: #0067b8;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 14px;
+        }
+        .btn-volver {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color:  #0067b8;; /* Marrón oscuro */
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.btn-volver:hover {
+    background-color: #8b5e3c; /* Variante más clara */
+    cursor: pointer;
+}
+
+    

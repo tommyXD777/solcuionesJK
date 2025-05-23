@@ -1,0 +1,231 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+nav .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+nav .btn:hover {
+    background-color: #1ebe57;
+}
+
+/* Estilos del catálogo */
+.catalogo {
+    padding: 40px 0;
+}
+
+.catalogo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.plataforma {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.plataforma:hover {
+    transform: translateY(-5px);
+}
+
+.plataforma img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.plataforma h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.plataforma p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.badge-disponible {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge-agotado {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Estilos del widget de contacto */
+.contact-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.widget-main {
+    background-color: #25D366;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.widget-text {
+    position: absolute;
+    left: 15px;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.widget-icons {
+    display: flex;
+    gap: 12px;
+    position: absolute;
+    right: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.widget-main:hover {
+    width: 180px;
+    border-radius: 30px;
+    padding-left: 15px;
+    justify-content: flex-start;
+}
+
+.widget-main:hover .widget-text,
+.widget-main:hover .widget-icons {
+    opacity: 1;
+}
+
+.widget-icon {
+    color: white;
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+
+.widget-icon:hover {
+    transform: scale(1.2);
+}
+
+.message-icon {
+    font-size: 18px;
+    transition: opacity 0.3s;
+}
+
+.widget-main:hover .message-icon {
+    opacity: 0;
+}
+
+/* Estilos del pie de página */
+footer {
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 1rem;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .catalogo-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .plataforma {
+        padding: 15px;
+    }
+
+    .plataforma img {
+        width: 80px;
+    }
+
+    .plataforma h2 {
+        font-size: 1.3rem;
+    }
+}
