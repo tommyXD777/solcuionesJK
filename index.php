@@ -9,10 +9,11 @@ $resultado = $conexion->query("SELECT * FROM servicios");
 <head>
     <meta charset="UTF-8">
     <title>Soluciones JK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/imagenes/logo.jpg" type="image/x-icon">
-  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/serviciosJK/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <header class="bg-dark text-white text-center py-4">
@@ -26,27 +27,26 @@ $resultado = $conexion->query("SELECT * FROM servicios");
         </div>
     </header>
 
-    <main class="catalogo">
+    <main class="grid">
         <?php while ($row = $resultado->fetch_assoc()): ?>
-            <div class="plataforma">
+            <div class="card">
                 <img src="/imagenes/<?= htmlspecialchars($row['imagen']) ?>" alt="<?= htmlspecialchars($row['nombre_servicio']) ?>">
-                <h2><?= htmlspecialchars($row['nombre_servicio']) ?></h2>
+                <h3><?= htmlspecialchars($row['nombre_servicio']) ?></h3>
                 <p>Precio: $<?= number_format($row['precio'], 2) ?></p>
-<p>Estado: 
-<span class="estado <?= strtolower(trim($row['estado'])) == 'disponible' ? 'disponible' : 'no-disponible' ?>">
-    <?= htmlspecialchars($row['estado']) ?>
-</span>
-</p>
-
+                <p>Estado: 
+                    <span class="estado <?= strtolower(trim($row['estado'])) == 'disponible' ? 'disponible' : 'agotado' ?>">
+                        <?= htmlspecialchars($row['estado']) ?>
+                    </span>
+                </p>
             </div>
         <?php endwhile; ?>
     </main>
 
-    <div class="contact-widget fixed-bottom d-flex justify-content-end p-3">
-        <div class="card p-3">
-            <span class="message-icon">💬 Contáctenos</span>
-            <div class="mt-2">
-                <a href="https://wa.me/+573118113650" target="_blank" class="btn btn-success me-2">
+    <div class="contact-widget">
+        <div class="card">
+            <span class="message-icon">💬</span>
+            <div class="social-buttons">
+                <a href="https://wa.me/+573118113650" target="_blank" class="btn btn-success">
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 <a href="https://www.facebook.com/share/1FbntxupsP/" target="_blank" class="btn btn-primary">
@@ -57,7 +57,7 @@ $resultado = $conexion->query("SELECT * FROM servicios");
     </div>
 
     <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2025 Soluciones JK - Distribuidor de Streaming</p>
+        <p>© 2025 Soluciones JK - Distribuidor de Streaming</p>
     </footer>
 </body>
 </html>
