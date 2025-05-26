@@ -11,7 +11,7 @@ $servicios = $conexion->query("SELECT * FROM servicios");
     <meta charset="UTF-8">
     <title>Soluciones JK</title>
     <link rel="shortcut icon" href="/imagenes/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="/serviciosJK/css/adm.css">
+    <link rel="stylesheet" href="/css/adm.css">
 </head>
 
 <body>
