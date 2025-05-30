@@ -21,6 +21,7 @@ $resultado = $conexion->query("SELECT * FROM servicios");
             <img src="/imagenes/logo.jpg" alt="Logo Soluciones JK" class="logo mb-2" style="width: 100px;">
             <h1>Soluciones JK</h1>
             <p>Consulta los mejores precios de tus plataformas favoritas</p>
+            <p>Esta página es exclusiva para  ver información, toda compra o pago se hace solo por WhatsApp</p>
             <nav>
                 <a href="/mvc/login.html" class="btn btn-outline-light">Iniciar sesión</a>
             </nav>
