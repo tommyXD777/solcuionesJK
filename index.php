@@ -54,11 +54,11 @@ $resultado = $conexion->query("SELECT * FROM servicios");
                         <span class="carrito-badge"><?= $carrito_total ?></span>
                     <?php endif; ?>
                 </a>
-                <a href="logout.php" class="btn btn-outline-light">Cerrar sesión</a>
+                <a href="/logout.php" class="btn btn-outline-light">Cerrar sesión</a>
 
             <?php elseif ($_SESSION['rol'] === 'administrador'): ?>
                 <a href="/administrador/adm.php" class="btn btn-outline-light">📋 Panel de administración</a>
-                <a href="logout.php" class="btn btn-outline-light">Cerrar sesión</a>
+                <a href="/logout.php" class="btn btn-outline-light">Cerrar sesión</a>
             <?php endif; ?>
 
         </nav>

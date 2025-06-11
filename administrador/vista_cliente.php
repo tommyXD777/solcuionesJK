@@ -1,28 +1,15 @@
 <?php
-// Conexión a la base de datos
 session_start();
-
-$servername = "localhost";
-$username = "root"; // Cambia según tu configuración
-$password = "";     // Cambia según tu configuración
-$database = "servicios_db"; // Cambia esto
-
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Verifica conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+require_once '../conexion.php'; // Usa la conexión correcta de Railway
 
 // Consulta SQL
-$sql = "SELECT nombre, apellido, telefono,username, correo FROM clientes";
-$resultado = $conn->query($sql);
+$sql = "SELECT nombre, apellido, telefono, username, correo FROM clientes";
+$resultado = $conexion->query($sql);
 $usuarios = [];
 
 if ($resultado && $resultado->num_rows > 0) {
     $usuarios = $resultado->fetch_all(MYSQLI_ASSOC);
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +36,7 @@ if ($resultado && $resultado->num_rows > 0) {
                 <th>Apellido</th>
                 <th>Teléfono</th>
                 <th>Correo</th>
-                <th>Nombre de Usuario</th> <!-- ✅ Nueva columna -->
+                <th>Nombre de Usuario</th>
             </tr>
         </thead>
         <tbody>
@@ -59,7 +46,7 @@ if ($resultado && $resultado->num_rows > 0) {
                 <td data-label="Apellido"><?= htmlspecialchars($user['apellido']) ?></td>
                 <td data-label="Teléfono"><?= htmlspecialchars($user['telefono']) ?></td>
                 <td data-label="Correo"><?= htmlspecialchars($user['correo']) ?></td>
-                <td data-label="Nombre de Usuario"><?= htmlspecialchars($user['username']) ?></td> <!-- ✅ Nueva celda -->
+                <td data-label="Nombre de Usuario"><?= htmlspecialchars($user['username']) ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
@@ -69,5 +56,5 @@ if ($resultado && $resultado->num_rows > 0) {
 </html>
 
 <?php
-$conn->close();
+$conexion->close();
 ?>
