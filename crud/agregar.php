@@ -1,16 +1,13 @@
 <?php
 require '../conexion.php';
-
 header('Content-Type: application/json');
 
-// Obtener datos del formulario
 $nombre = $_POST['nombre_servicio'] ?? '';
-$precio = $_POST['precio'] ?? 0;
+$precio = floatval($_POST['precio'] ?? 0);
 $imagen = $_FILES['imagen']['name'] ?? '';
 $rutaTemporal = $_FILES['imagen']['tmp_name'] ?? '';
 
-// Validar datos
-if (empty($nombre) || !is_numeric($precio) || empty($imagen)) {
+if (empty($nombre) || $precio <= 0 || empty($imagen)) {
     echo json_encode([
         'status' => 'error',
         'message' => 'Nombre, precio e imagen son requeridos.'
@@ -18,34 +15,29 @@ if (empty($nombre) || !is_numeric($precio) || empty($imagen)) {
     exit;
 }
 
-// Definir la ruta de destino en la raíz
-$rutaDestino = __DIR__ . '/../imagenes/' . basename($imagen);
+// 🌐 Ruta relativa para Railway (usa /tmp para archivos temporales)
+$rutaDestino = '/tmp/' . basename($imagen);
 
-// Asegúrate de que la carpeta 'imagenes' exista en la raíz
-if (!is_dir(__DIR__ . '/../imagenes')) {
-    mkdir(__DIR__ . '/../imagenes', 0777, true);
-}
-
-// Verificar si el archivo es una imagen válida
+// Verificar tipo MIME válido
 $tipoImagen = mime_content_type($rutaTemporal);
-if (!in_array($tipoImagen, ['image/jpeg', 'image/png', 'image/gif'])) {
+if (!in_array($tipoImagen, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'])) {
     echo json_encode([
         'status' => 'error',
-        'message' => 'Solo se permiten imágenes JPEG, PNG o GIF.'
+        'message' => 'Solo se permiten imágenes JPEG, PNG, GIF o WEBP.'
     ]);
     exit;
 }
 
-// Mover la imagen a la carpeta en la raíz
+// ✅ Mover la imagen a /tmp (Railway no permite escribir en otras rutas)
 if (!move_uploaded_file($rutaTemporal, $rutaDestino)) {
     echo json_encode([
         'status' => 'error',
-        'message' => 'Error al guardar la imagen.'
+        'message' => 'Error al guardar la imagen en /tmp.'
     ]);
     exit;
 }
 
-// Insertar en la base de datos
+// 💾 Guardar solo el nombre, no el path absoluto (usualmente usas /imagenes en producción local)
 $sql = "INSERT INTO servicios (nombre_servicio, precio, imagen, estado) VALUES (?, ?, ?, 'Disponible')";
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("sds", $nombre, $precio, $imagen);
@@ -53,15 +45,14 @@ $stmt->bind_param("sds", $nombre, $precio, $imagen);
 if ($stmt->execute()) {
     echo json_encode([
         'status' => 'success',
-        'message' => 'Servicio agregado correctamente'
+        'message' => '✅ Servicio agregado correctamente'
     ]);
 } else {
     echo json_encode([
         'status' => 'error',
-        'message' => 'Error al guardar el servicio: ' . $stmt->error
+        'message' => '❌ Error al guardar el servicio: ' . $stmt->error
     ]);
 }
 
 $stmt->close();
 $conexion->close();
-?>

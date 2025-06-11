@@ -3,31 +3,23 @@ require '../conexion.php';
 session_start();
 $servicios = $conexion->query("SELECT * FROM servicios");
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <title>Soluciones JK</title>
     <link rel="shortcut icon" href="/imagenes/logo.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/css/adm.css">
 </head>
-
 <body>
-
     <div class="admin-container">
         <h1>Panel de Administrador</h1>
-
         <div class="back-to-home">
             <a href="/index.php" class="btn-volver">Volver al inicio</a>
             <a href="vista_cliente.php" class="btn-volver">Ver clientes</a>
             <a href="ver_perfil.php" class="btn-volver">perfil</a>
-             <a href="/logout.php" class="btn-volver">cerrar sesion</a>
+            <a href="/logout.php" class="btn-volver">cerrar sesion</a>
         </div>
-      
-
-
         <div class="add-product-form">
             <h2>Agregar Nuevo servicio</h2>
             <div id="mensaje-form" style="margin-bottom: 10px;"></div>
@@ -47,7 +39,6 @@ $servicios = $conexion->query("SELECT * FROM servicios");
                 <button type="submit">Guardar Servicio</button>
             </form>
         </div>
-
         <h2>Servicios Existentes</h2>
         <table class="products-table">
             <thead>
@@ -65,9 +56,7 @@ $servicios = $conexion->query("SELECT * FROM servicios");
                 <?php while ($row = $servicios->fetch_assoc()): ?>
                     <tr>
                         <td><?= htmlspecialchars($row['nombre_servicio']) ?></td>
-                        <td>
-                            <img src="/imagenes/<?= htmlspecialchars($row['imagen']) ?>" alt="Imagen del servicio" width="100">
-                        </td>
+                        <td><img src="/imagenes/<?= htmlspecialchars($row['imagen']) ?>" alt="Imagen del servicio" width="100"></td>
                         <td class="celda-precio">$<?= number_format($row['precio'], 2) ?></td>
                         <td><?= $row['estado'] ?></td>
                         <td>
@@ -92,84 +81,59 @@ $servicios = $conexion->query("SELECT * FROM servicios");
             </tbody>
         </table>
     </div>
-
     <script>
-        // Manejar el formulario de agregar servicio
         document.getElementById('form-agregar-servicio').addEventListener('submit', function (e) {
             e.preventDefault();
-
             const formData = new FormData(this);
-            fetch('/crud/agregar.php', {
-                method: 'POST',
-                body: formData
-            })
+            fetch('/crud/agregar.php', { method: 'POST', body: formData })
                 .then(res => res.json())
                 .then(data => {
                     alert(data.message);
-                    if (data.status === 'success') {
-                        setTimeout(() => location.reload(), 1000);
-                    }
+                    if (data.status === 'success') setTimeout(() => location.reload(), 1000);
                 })
-                .catch(err => {
-                    alert('❌ Error al conectar con el servidor.');
-                });
+                .catch(() => alert('❌ Error al conectar con el servidor.'));
         });
 
-        // Manejar actualización de precios
         document.querySelectorAll('.form-actualizar').forEach(form => {
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
-
                 const id = this.dataset.id;
                 const nuevo_precio = this.querySelector('input[name="nuevo_precio"]').value;
                 const mensajeDiv = document.getElementById('mensaje-' + id);
-
                 fetch('/solcuionesJK/crud/editar_precio.php', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     body: `id=${id}&nuevo_precio=${nuevo_precio}`
                 })
-                    .then(res => res.text())
-                    .then(data => {
-                        mensajeDiv.innerHTML = data;
-                        mensajeDiv.style.color = 'green';
-                        const precioCell = form.closest('tr').querySelector('.celda-precio');
-                        if (precioCell) {
-                            precioCell.textContent = '$' + parseFloat(nuevo_precio).toFixed(2);
-                        }
-                    })
-                    .catch(err => {
-                        mensajeDiv.innerHTML = '❌ Error al actualizar.';
-                        mensajeDiv.style.color = 'red';
-                    });
+                .then(res => res.text())
+                .then(data => {
+                    mensajeDiv.innerHTML = data;
+                    mensajeDiv.style.color = 'green';
+                    const precioCell = form.closest('tr').querySelector('.celda-precio');
+                    if (precioCell) precioCell.textContent = '$' + parseFloat(nuevo_precio).toFixed(2);
+                })
+                .catch(() => {
+                    mensajeDiv.innerHTML = '❌ Error al actualizar.';
+                    mensajeDiv.style.color = 'red';
+                });
             });
         });
 
-        // Manejar eliminación de servicios
         function confirmDelete(id) {
             if (confirm('¿Estás seguro de que deseas eliminar este servicio?')) {
                 fetch('/crud/eliminar.php', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     body: `id=${id}`
                 })
-                    .then(res => res.json())
-                    .then(data => {
-                        alert(data.message);
-                        if (data.status === 'success') {
-                            setTimeout(() => location.reload(), 1000);
-                        }
-                    })
-                    .catch(err => {
-                        alert('❌ Error al conectar con el servidor.');
-                    });
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.message);
+                    if (data.status === 'success') setTimeout(() => location.reload(), 1000);
+                })
+                .catch(() => alert('❌ Error al conectar con el servidor.'));
             }
         }
     </script>
 </body>
-
 </html>
