@@ -1,6 +1,6 @@
 <?php
 require '../conexion.php';
-
+session_start();
 $servicios = $conexion->query("SELECT * FROM servicios");
 ?>
 
@@ -15,12 +15,18 @@ $servicios = $conexion->query("SELECT * FROM servicios");
 </head>
 
 <body>
+
     <div class="admin-container">
         <h1>Panel de Administrador</h1>
 
         <div class="back-to-home">
             <a href="/index.php" class="btn-volver">Volver al inicio</a>
+            <a href="vista_cliente.php" class="btn-volver">Ver clientes</a>
+            <a href="ver_perfil.php" class="btn-volver">perfil</a>
+             <a href="/logout.php" class="btn-volver">cerrar sesion</a>
         </div>
+      
+
 
         <div class="add-product-form">
             <h2>Agregar Nuevo servicio</h2>
@@ -118,7 +124,7 @@ $servicios = $conexion->query("SELECT * FROM servicios");
                 const nuevo_precio = this.querySelector('input[name="nuevo_precio"]').value;
                 const mensajeDiv = document.getElementById('mensaje-' + id);
 
-                fetch('/crud/editar_precio.php', {
+                fetch('/solcuionesJK/crud/editar_precio.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',

@@ -1,91 +1,164 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #111;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        
-        .login-container {
-            background-color: #bdc3c7 ;
-            width: 350px;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        
-        .login-logo {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-            object-fit: contain;
-        }
-        
-        h1 {
-            color: #000;
-            font-size: 24px;
-            margin-bottom: 30px;
-            font-weight: 600;
-        }
-        
-        .input-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-            font-size: 14px;
-        }
-        
-        input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
-        
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #0067b8;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        
-        .activation-notice {
-            margin-top: 30px;
-            color: #666;
-            font-size: 12px;
-            line-height: 1.5;
-        }
-        .back-to-home {
+.login-container {
+    background-color: #1e1e1e;
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     text-align: center;
-    margin: 15px 0; /* Espacio arriba y abajo */
+    box-sizing: border-box;
+}
+
+.login-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+h1 {
+    color: #27ae60;
+    font-size: 24px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #ccc;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+    background-color: #2c2c2c;
+    color: white;
+}
+
+input:focus {
+    outline: none;
+    background-color: #333;
+    border: 1px solid #27ae60;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #219150;
+}
+
+.btn-link {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    background-color: transparent;
+    border: 1px solid #27ae60;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-link:hover {
+    background-color: #27ae60;
+    color: white;
+}
+
+.activation-notice {
+    margin-top: 30px;
+    color: #bbb;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.back-to-home {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
 }
 
 .back-to-home a {
-    color: #0067b8; /* Mismo azul que el botón de login */
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid #00acee;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
     text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .back-to-home a:hover {
-    color: #004e8c; /* Azul más oscuro al pasar el mouse */
-    text-decoration: underline;
+    background-color: #00acee;
+    color: #111;
 }
-    
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px 20px;
+    }
+}
+body {
+    color: white;
+}
+
+label {
+    color: white;
+}
+
+input::placeholder {
+    color: white;
+    opacity: 0.8; /* Puedes ajustarlo según lo necesites */
+}
+
+a {
+    color: white;
+}
+
+h2, h1, h3, h4, h5 {
+    color: white;
+}
+
+button {
+    color: white;
+}
+

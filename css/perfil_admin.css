@@ -1,0 +1,134 @@
+/* Fondo general */
+body {
+    background-color: #121212;
+    font-family: 'Segoe UI', sans-serif;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor centrado */
+.perfil-container {
+    max-width: 500px;
+    margin: 4rem auto;
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Título */
+.perfil-container h2 {
+    text-align: center;
+    color: #27ae60;
+    margin-bottom: 1.5rem;
+}
+
+/* Etiquetas */
+.perfil-container label {
+    display: block;
+    margin-top: 1rem;
+    color: #ccc;
+    font-weight: 500;
+}
+
+/* Campos de entrada */
+.perfil-container input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2c2c2c;
+    color: white;
+}
+
+.perfil-container input:focus {
+    outline: none;
+    background-color: #333;
+}
+
+/* Botón actualizar */
+.btn-actualizar {
+    width: 100%;
+    margin-top: 1.8rem;
+    padding: 12px;
+    background-color: #27ae60;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-actualizar:hover {
+    background-color: #219150;
+}
+
+/* Enlace "Volver al Panel" */
+.link-volver {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #00acee;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.link-volver:hover {
+    color: #3498db;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .perfil-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+/* Botón principal */
+.btn-actualizar {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 12px;
+    background-color: #27ae60;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-actualizar:hover {
+    background-color: #1e874c;
+    transform: scale(1.02);
+}
+
+/* Enlace superior: volver al panel */
+.link-volver {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: #00acee;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-left: 20px;
+}
+
+.link-volver::before {
+    content: "🔙";
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.link-volver:hover {
+    color: #3498db;
+    text-decoration: underline;
+}

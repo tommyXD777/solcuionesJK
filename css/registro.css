@@ -1,0 +1,183 @@
+/* Fondo general */
+body {
+    background-color: #121212;
+    font-family: 'Segoe UI', sans-serif;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Contenedor principal para formularios */
+.registro-container {
+    max-width: 420px;
+    margin: 4rem auto;
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Título del formulario */
+.registro-container h2 {
+    text-align: center;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+/* Estilos generales del formulario */
+.registro-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.registro-container label {
+    margin-top: 1rem;
+    color: #ccc;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+/* Campos de entrada */
+.registro-container input[type="text"],
+.registro-container input[type="email"],
+.registro-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2c2c2c;
+    color: #f1f1f1;
+    font-size: 1rem;
+}
+
+.registro-container input:focus {
+    outline: none;
+    background-color: #333;
+}
+
+/* Botón de acción */
+.btn-registrar {
+    width: 100%;
+    margin-top: 1.8rem;
+    padding: 12px;
+    background-color: #27ae60;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+}
+
+.btn-registrar:hover {
+    background-color: #219150;
+}
+
+/* Mensajes de estado */
+.mensaje {
+    text-align: center;
+    margin: 1rem 0;
+    color: #f1c40f;
+    font-size: 0.95rem;
+}
+
+/* Enlaces adicionales */
+.enlaces-extra {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.enlaces-extra a {
+    color: #00acee;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.enlaces-extra a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    .registro-container {
+        max-width: 90%;
+        margin: 2rem auto;
+        padding: 1.5rem;
+    }
+
+    .registro-container h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .registro-container label {
+        font-size: 0.9rem;
+    }
+
+    .registro-container input[type="text"],
+    .registro-container input[type="email"],
+    .registro-container input[type="password"] {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .btn-registrar {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .mensaje,
+    .enlaces-extra {
+        font-size: 0.85rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .registro-container {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .registro-container h2 {
+        font-size: 1.3rem;
+    }
+
+    .registro-container label {
+        font-size: 0.85rem;
+    }
+
+    .registro-container input[type="text"],
+    .registro-container input[type="email"],
+    .registro-container input[type="password"] {
+        padding: 7px;
+        font-size: 0.85rem;
+    }
+
+    .btn-registrar {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+}
+.btn-volver {
+    display: block;
+    text-align: center;
+    margin-top: 1.2rem;
+    padding: 10px;
+    background-color: #2c2c2c;
+    border-radius: 6px;
+    color: #00acee;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.btn-volver:hover {
+    background-color: #333;
+    text-decoration: underline;
+}
