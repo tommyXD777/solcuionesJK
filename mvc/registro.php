@@ -1,6 +1,9 @@
 <?php
 require '../conexion.php';
 session_start();
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -19,24 +22,30 @@ function enviarCorreo($destinatario, $asunto, $mensaje) {
     $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = getenv('SMTP_USER');
-        $mail->Password = getenv('SMTP_PASS');
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = getenv('SMTP_USER');
+        $mail->Password   = getenv('SMTP_PASS');
         $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
+        $mail->Port       = 587;
 
-        $mail->setFrom(getenv('SMTP_USER'), 'ServiciosJK');
+        $from = getenv('SMTP_USER');
+        if (!$from) {
+            throw new Exception("SMTP_USER no definido en entorno");
+        }
+
+        $mail->setFrom($from, 'ServiciosJK');
         $mail->addAddress($destinatario);
         $mail->Subject = $asunto;
-        $mail->Body = $mensaje;
+        $mail->Body    = $mensaje;
         $mail->send();
         return true;
     } catch (Exception $e) {
-        echo "Error al enviar: " . $mail->ErrorInfo;
+        echo "❌ Error al enviar: " . $mail->ErrorInfo;
         return false;
     }
 }
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nombre = $_POST['nombre'] ?? '';
