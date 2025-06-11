@@ -16,38 +16,16 @@ $resultado = $conexion->query("SELECT * FROM servicios");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<header class="bg-dark text-white text-center py-4">
-    <div class="container">
-        <img src="/imagenes/logo.jpg" alt="Logo Soluciones JK" class="logo mb-2" style="width: 100px;">
-        <h1>Soluciones JK</h1>
-        <p>Consulta los mejores precios de tus plataformas favoritas</p>
-
-        
-        <nav class="mb-3">
-            <?php if (isset($_SESSION['usuario'])): ?>
-                <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'administrador'): ?>
-                    
-                    <a href="/administrador/adm.php" class="btn btn-info">Panel de Administración</a>
-                <?php elseif ($_SESSION['rol'] === 'cliente'): ?>
-                    <a href="/mvc/perfil.php" class="btn btn-outline-light me-2">
-                        <i class="fas fa-user-circle"></i>
-                        <?= htmlspecialchars($_SESSION['nombre']) ?>
-                    </a>
-                    <a href="/carrito/ver_carrito.php" class="btn btn-warning">
-                        🛒 Ver Carrito
-                        <?php if (!empty($_SESSION['carrito'])): ?>
-                            <span class="badge bg-danger"><?= count($_SESSION['carrito']) ?></span>
-                        <?php endif; ?>
-                    </a>
-                <?php endif; ?>
-                <a href="/logout.php" class="btn btn-danger">Cerrar sesión</a>
-            <?php else: ?>
-                <a href="/mvc/login.php" class="btn btn-outline-primary me-2">Iniciar sesión</a>
-                <a href="/mvc/registro.php" class="btn btn-success">Registrarse</a>
-            <?php endif; ?>
-        </nav>
-    </div>
-</header>
+    <header class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <img src="/imagenes/logo.jpg" alt="Logo Soluciones JK" class="logo mb-2" style="width: 100px;">
+            <h1>Soluciones JK</h1>
+            <p>Consulta los mejores precios de tus plataformas favoritas</p>
+            <nav>
+                <a href="/mvc/login.html" class="btn btn-outline-light">Iniciar sesión</a>
+            </nav>
+        </div>
+    </header>
 
 <main class="grid">
     <?php while ($row = $resultado->fetch_assoc()): ?>
