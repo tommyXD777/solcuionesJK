@@ -23,13 +23,19 @@ $resultado = $conexion->query("SELECT * FROM servicios");
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-   .servicio-img {
+  .servicio-img {
     width: 100%;
     height: 200px;
     object-fit: cover;
     border-radius: 12px;
     margin-bottom: 10px;
+    transition: transform 0.3s ease;
 }
+
+.servicio-img:hover {
+    transform: scale(1.03);
+}
+
 
 </style>
 
@@ -67,12 +73,7 @@ $resultado = $conexion->query("SELECT * FROM servicios");
         transform: scale(1.02);
     }
 
-    .card img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 12px;
-        margin-bottom: 10px;
-    }
+
 
     .estado {
         padding: 4px 8px;
