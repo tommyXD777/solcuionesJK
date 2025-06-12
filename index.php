@@ -26,7 +26,7 @@ $resultado = $conexion->query("SELECT * FROM servicios");
 
 .servicio-img {
     width: 100%;
-    height: 260px;                /* 🔺 Altura aumentada */
+      height: 220px;               /* 🔺 Altura aumentada */
     object-fit: contain;          /* 🔒 No recorta los logos */
     object-position: center;
     background-color: white;      /* ✅ Fondos con transparencia */
@@ -65,14 +65,11 @@ $resultado = $conexion->query("SELECT * FROM servicios");
     }
 
     .card {
-        background-color: #fff;
-        border-radius: 16px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        transition: transform 0.2s;
-        text-align: center;
-        padding: 16px;
-    }
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+}
 
     .card:hover {
         transform: scale(1.02);
