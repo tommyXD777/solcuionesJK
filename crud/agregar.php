@@ -7,6 +7,7 @@ $precio = floatval($_POST['precio'] ?? 0);
 $imagen = $_FILES['imagen']['name'] ?? '';
 $rutaTemporal = $_FILES['imagen']['tmp_name'] ?? '';
 
+// Validación básica
 if (empty($nombre) || $precio <= 0 || empty($imagen)) {
     echo json_encode([
         'status' => 'error',
@@ -14,10 +15,6 @@ if (empty($nombre) || $precio <= 0 || empty($imagen)) {
     ]);
     exit;
 }
-
-// 🌐 Ruta relativa para Railway (usa /tmp para archivos temporales)
-$rutaDestino = '../imagenes/' . basename($imagen);
-
 
 // Verificar tipo MIME válido
 $tipoImagen = mime_content_type($rutaTemporal);
@@ -29,29 +26,54 @@ if (!in_array($tipoImagen, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'
     exit;
 }
 
-// ✅ Mover la imagen a /tmp (Railway no permite escribir en otras rutas)
-if (!move_uploaded_file($rutaTemporal, $rutaDestino)) {
+// ======= FUNCIÓN PARA SUBIR A CLOUDINARY =======
+function subirACloudinary($archivoTemporal) {
+    $cloud_name = 'dsrzx5q0r'; // ← reemplaza si usas otro
+    $upload_preset = 'ml_default'; // este preset viene por defecto
+    $url = "https://api.cloudinary.com/v1_1/$cloud_name/image/upload";
+
+    $post = [
+        'file' => new CURLFile($archivoTemporal),
+        'upload_preset' => $upload_preset
+    ];
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $respuesta = curl_exec($ch);
+    curl_close($ch);
+
+    $data = json_decode($respuesta, true);
+    return $data['secure_url'] ?? null;
+}
+
+// Subimos a Cloudinary
+$urlImagen = subirACloudinary($rutaTemporal);
+
+if (!$urlImagen) {
     echo json_encode([
         'status' => 'error',
-        'message' => 'Error al guardar la imagen en /tmp.'
+        'message' => 'Error al subir la imagen a Cloudinary'
     ]);
     exit;
 }
 
-// 💾 Guardar solo el nombre, no el path absoluto (usualmente usas /imagenes en producción local)
+// Guardamos en la base de datos la URL de Cloudinary
 $sql = "INSERT INTO servicios (nombre_servicio, precio, imagen, estado) VALUES (?, ?, ?, 'Disponible')";
 $stmt = $conexion->prepare($sql);
-$stmt->bind_param("sds", $nombre, $precio, $imagen);
+$stmt->bind_param("sds", $nombre, $precio, $urlImagen);
 
 if ($stmt->execute()) {
     echo json_encode([
         'status' => 'success',
-        'message' => '✅ Servicio agregado correctamente'
+        'message' => '✅ Servicio agregado correctamente con imagen subida a Cloudinary'
     ]);
 } else {
     echo json_encode([
         'status' => 'error',
-        'message' => '❌ Error al guardar el servicio: ' . $stmt->error
+        'message' => '❌ Error al guardar el servicio en la base de datos'
     ]);
 }
 

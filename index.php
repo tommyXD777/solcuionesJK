@@ -68,7 +68,8 @@ $resultado = $conexion->query("SELECT * FROM servicios");
 <main class="grid">
     <?php while ($row = $resultado->fetch_assoc()): ?>
         <div class="card">
-            <img src="/imagenes/<?= htmlspecialchars($row['imagen']) ?>" alt="<?= htmlspecialchars($row['nombre_servicio']) ?>">
+            <img src="<?= htmlspecialchars($row['imagen']) ?>" alt="<?= htmlspecialchars($row['nombre_servicio']) ?>" style="width: 150px;">
+
             <h3><?= htmlspecialchars($row['nombre_servicio']) ?></h3>
             <p>Precio: $<?= number_format($row['precio'], 2) ?></p>
             <p>Estado: 
