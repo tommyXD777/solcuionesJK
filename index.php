@@ -34,6 +34,57 @@ $resultado = $conexion->query("SELECT * FROM servicios");
             left: -10px;
         }
     </style>
+    <style>
+    main.grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .card {
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.2s;
+        text-align: center;
+        padding: 16px;
+    }
+
+    .card:hover {
+        transform: scale(1.02);
+    }
+
+    .card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        margin-bottom: 10px;
+    }
+
+    .estado {
+        padding: 4px 8px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .estado.disponible {
+        background-color: #d1fae5;
+        color: #065f46;
+    }
+
+    .estado.agotado {
+        background-color: #fee2e2;
+        color: #991b1b;
+    }
+
+    .card button {
+        margin-top: 10px;
+    }
+</style>
+
 </head>
 <body>
 <header class="bg-dark text-white text-center py-4">
@@ -68,25 +119,27 @@ $resultado = $conexion->query("SELECT * FROM servicios");
 <main class="grid">
     <?php while ($row = $resultado->fetch_assoc()): ?>
         <div class="card">
-            <img src="<?= htmlspecialchars($row['imagen']) ?>" alt="<?= htmlspecialchars($row['nombre_servicio']) ?>" style="width: 150px;">
+    <img src="<?= htmlspecialchars($row['imagen']) ?>" alt="<?= htmlspecialchars($row['nombre_servicio']) ?>">
+    
+    <h3><?= htmlspecialchars($row['nombre_servicio']) ?></h3>
+    <p>Precio: <strong>$<?= number_format($row['precio'], 2) ?></strong></p>
 
-            <h3><?= htmlspecialchars($row['nombre_servicio']) ?></h3>
-            <p>Precio: $<?= number_format($row['precio'], 2) ?></p>
-            <p>Estado: 
-                <span class="estado <?= strtolower(trim($row['estado'])) == 'disponible' ? 'disponible' : 'agotado' ?>">
-                    <?= htmlspecialchars($row['estado']) ?>
-                </span>
-            </p>
+    <p>
+        <span class="estado <?= strtolower(trim($row['estado'])) == 'disponible' ? 'disponible' : 'agotado' ?>">
+            <?= htmlspecialchars($row['estado']) ?>
+        </span>
+    </p>
 
-            <?php if (strtolower(trim($row['estado'])) == 'disponible'): ?>
-                <form method="POST" action="/carrito/agregar_carrito.php">
-                    <input type="hidden" name="id_servicio" value="<?= $row['id'] ?>">
-                    <button type="submit" class="btn btn-primary mt-2">Agregar al carrito 🛒</button>
-                </form>
-            <?php else: ?>
-                <p class="text-danger">Producto no disponible</p>
-            <?php endif; ?>
-        </div>
+    <?php if (strtolower(trim($row['estado'])) == 'disponible'): ?>
+        <form method="POST" action="/carrito/agregar_carrito.php">
+            <input type="hidden" name="id_servicio" value="<?= $row['id'] ?>">
+            <button type="submit" class="btn btn-primary btn-sm">Agregar al carrito 🛒</button>
+        </form>
+    <?php else: ?>
+        <p class="text-danger mt-2">Producto no disponible</p>
+    <?php endif; ?>
+</div>
+
     <?php endwhile; ?>
 </main>
 

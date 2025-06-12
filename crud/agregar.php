@@ -29,7 +29,8 @@ if (!in_array($tipoImagen, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'
 // ======= FUNCIÓN PARA SUBIR A CLOUDINARY =======
 function subirACloudinary($archivoTemporal) {
     $cloud_name = 'dsrzx5q0r'; // ← reemplaza si usas otro
-    $upload_preset = 'ml_default'; // este preset viene por defecto
+   $upload_preset = 'servicios_unsigned';
+ // este preset viene por defecto
     $url = "https://api.cloudinary.com/v1_1/$cloud_name/image/upload";
 
     $post = [
