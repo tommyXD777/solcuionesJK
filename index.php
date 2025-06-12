@@ -26,7 +26,7 @@ $resultado = $conexion->query("SELECT * FROM servicios");
 
 .servicio-img {
     width: 100%;
-    aspect-ratio: 4 / 3;         /* ✅ Más ancho que alto */
+    aspect-ratio: 16 / 3;         /* ✅ Más ancho que alto */
     object-fit: cover;
     object-position: center;
     border-radius: 12px;
