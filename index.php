@@ -26,16 +26,14 @@ $resultado = $conexion->query("SELECT * FROM servicios");
 
 .servicio-img {
     width: 100%;
-      height: 220px;               /* 🔺 Altura aumentada */
-    object-fit: contain;          /* 🔒 No recorta los logos */
+    height: 260px;               /* Aumentamos altura */
+    object-fit: cover;           /* ✅ Llenan todo el contenedor */
     object-position: center;
-    background-color: white;      /* ✅ Fondos con transparencia */
     border-radius: 12px;
     margin-bottom: 10px;
     transition: transform 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-
 }
+
 
 .servicio-img:hover {
     transform: scale(1.03);
