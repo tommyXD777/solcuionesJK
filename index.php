@@ -66,12 +66,13 @@ $resultado = $conexion->query("SELECT * FROM servicios");
         transform: scale(1.02);
     }
 
-    .card img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 12px;
-        margin-bottom: 10px;
-    }
+    .card img.servicio-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
 
     .estado {
         padding: 4px 8px;
