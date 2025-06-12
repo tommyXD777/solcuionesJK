@@ -32,7 +32,7 @@ $resultado = $conexion->query("SELECT * FROM servicios");
     border-radius: 12px;
     margin-bottom: 10px;
     transition: transform 0.3s ease;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 3;
 }
 
 
