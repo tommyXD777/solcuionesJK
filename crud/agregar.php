@@ -16,7 +16,8 @@ if (empty($nombre) || $precio <= 0 || empty($imagen)) {
 }
 
 // 🌐 Ruta relativa para Railway (usa /tmp para archivos temporales)
-$rutaDestino = '/tmp/' . basename($imagen);
+$rutaDestino = '../imagenes/' . basename($imagen);
+
 
 // Verificar tipo MIME válido
 $tipoImagen = mime_content_type($rutaTemporal);
