@@ -25,12 +25,11 @@ $resultado = $conexion->query("SELECT * FROM servicios");
     <style>
  .servicio-img {
     width: 100%;
-    aspect-ratio: 4 / 3; /* Más ancho */
+    aspect-ratio: 5 / 4;
     object-fit: cover;
     border-radius: 12px;
     margin-bottom: 10px;
     transition: transform 0.3s ease;
-    object-position: center center;
 }
 
 
