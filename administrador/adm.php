@@ -54,30 +54,43 @@ $servicios = $conexion->query("SELECT * FROM servicios");
             </thead>
             <tbody>
                 <?php while ($row = $servicios->fetch_assoc()): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($row['nombre_servicio']) ?></td>
-                        <td><img src="/imagenes/<?= htmlspecialchars($row['imagen']) ?>" alt="Imagen del servicio" width="100"></td>
-                        <td class="celda-precio">$<?= number_format($row['precio'], 2) ?></td>
-                        <td><?= $row['estado'] ?></td>
-                        <td>
-                            <form action="/crud/cambiar_estado.php" method="POST">
-                                <input type="hidden" name="id" value="<?= $row['id'] ?>">
-                                <span class="estado <?= strtolower(trim($row['estado'])) == 'disponible' ? 'disponible' : 'no-disponible' ?>">
-                                <button type="submit">Cambiar estado</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form class="form-actualizar" data-id="<?= $row['id'] ?>">
-                                <input type="number" step="0.01" name="nuevo_precio" value="<?= $row['precio'] ?>" required>
-                                <button type="submit">Actualizar</button>
-                            </form>
-                            <div class="mensaje" id="mensaje-<?= $row['id'] ?>"></div>
-                        </td>
-                        <td>
-                            <button onclick="confirmDelete(<?= $row['id'] ?>)" style="text-align: center; margin-left: 2.5rem;">Eliminar</button>
-                        </td>
-                    </tr>
-                <?php endwhile; ?>
+    <tr>
+        <td><?= htmlspecialchars($row['nombre_servicio']) ?></td>
+
+        <td>
+            <?php if (!empty($row['imagen'])): ?>
+                <img src="<?= htmlspecialchars($row['imagen']) ?>" alt="Imagen del servicio" width="100">
+            <?php else: ?>
+                <span class="text-muted">Sin imagen</span>
+            <?php endif; ?>
+        </td>
+
+        <td class="celda-precio">$<?= number_format($row['precio'], 2) ?></td>
+        <td><?= htmlspecialchars($row['estado']) ?></td>
+
+        <td>
+            <form action="/crud/cambiar_estado.php" method="POST">
+                <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                <button type="submit" class="estado <?= strtolower(trim($row['estado'])) == 'disponible' ? 'disponible' : 'no-disponible' ?>">
+                    Cambiar estado
+                </button>
+            </form>
+        </td>
+
+        <td>
+            <form class="form-actualizar" data-id="<?= $row['id'] ?>">
+                <input type="number" step="0.01" name="nuevo_precio" value="<?= $row['precio'] ?>" required>
+                <button type="submit">Actualizar</button>
+            </form>
+            <div class="mensaje" id="mensaje-<?= $row['id'] ?>"></div>
+        </td>
+
+        <td>
+            <button onclick="confirmDelete(<?= $row['id'] ?>)" style="text-align: center; margin-left: 2.5rem;">Eliminar</button>
+        </td>
+    </tr>
+<?php endwhile; ?>
+
             </tbody>
         </table>
     </div>
