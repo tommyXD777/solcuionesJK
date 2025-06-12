@@ -23,6 +23,16 @@ $resultado = $conexion->query("SELECT * FROM servicios");
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+    .servicio-img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+
+    <style>
         .carrito-badge {
             background-color: red;
             color: white;
@@ -118,29 +128,29 @@ $resultado = $conexion->query("SELECT * FROM servicios");
 
 <main class="grid">
     <?php while ($row = $resultado->fetch_assoc()): ?>
-        <div class="card">
-    <img src="<?= htmlspecialchars($row['imagen']) ?>" alt="<?= htmlspecialchars($row['nombre_servicio']) ?>">
-    
-    <h3><?= htmlspecialchars($row['nombre_servicio']) ?></h3>
-    <p>Precio: <strong>$<?= number_format($row['precio'], 2) ?></strong></p>
+    <div class="card">
+        <img src="<?= htmlspecialchars($row['imagen']) ?>" alt="<?= htmlspecialchars($row['nombre_servicio']) ?>" class="servicio-img">
 
-    <p>
-        <span class="estado <?= strtolower(trim($row['estado'])) == 'disponible' ? 'disponible' : 'agotado' ?>">
-            <?= htmlspecialchars($row['estado']) ?>
-        </span>
-    </p>
+        <h3><?= htmlspecialchars($row['nombre_servicio']) ?></h3>
+        <p>Precio: <strong>$<?= number_format($row['precio'], 2) ?></strong></p>
 
-    <?php if (strtolower(trim($row['estado'])) == 'disponible'): ?>
-        <form method="POST" action="/carrito/agregar_carrito.php">
-            <input type="hidden" name="id_servicio" value="<?= $row['id'] ?>">
-            <button type="submit" class="btn btn-primary btn-sm">Agregar al carrito 🛒</button>
-        </form>
-    <?php else: ?>
-        <p class="text-danger mt-2">Producto no disponible</p>
-    <?php endif; ?>
-</div>
+        <p>
+            <span class="estado <?= strtolower(trim($row['estado'])) == 'disponible' ? 'disponible' : 'agotado' ?>">
+                <?= htmlspecialchars($row['estado']) ?>
+            </span>
+        </p>
 
-    <?php endwhile; ?>
+        <?php if (strtolower(trim($row['estado'])) == 'disponible'): ?>
+            <form method="POST" action="/carrito/agregar_carrito.php">
+                <input type="hidden" name="id_servicio" value="<?= $row['id'] ?>">
+                <button type="submit" class="btn btn-primary mt-2">Agregar al carrito 🛒</button>
+            </form>
+        <?php else: ?>
+            <p class="text-danger">Producto no disponible</p>
+        <?php endif; ?>
+    </div>
+<?php endwhile; ?>
+
 </main>
 
 <!-- Widget de contacto -->
