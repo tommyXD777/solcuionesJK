@@ -6,15 +6,19 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    display: flex; /* Ensure centering */
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
 }
 
 /* Contenedor principal para formularios */
 .registro-container {
-    max-width: 420px;
-    margin: 4rem auto;
+    max-width: 520px; /* Increased width for larger appearance */
+    width: 90%; /* Ensures responsiveness */
+    margin: 4rem auto; /* Centers horizontally, maintains vertical spacing */
     background-color: #1e1e1e;
-    padding: 2rem;
-    border-radius: 12px;
+    padding: 2.5rem; /* Increased padding for larger feel */
+    border-radius: 14px; /* Slightly larger border-radius */
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
 }
 
@@ -22,8 +26,8 @@ body {
 .registro-container h2 {
     text-align: center;
     color: #ccc;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
+    margin-bottom: 2rem; /* Increased spacing */
+    font-size: 2.2rem; /* Larger font size */
 }
 
 /* Estilos generales del formulario */
@@ -32,11 +36,12 @@ body {
     flex-direction: column;
 }
 
+/* Etiquetas */
 .registro-container label {
-    margin-top: 1rem;
+    margin-top: 1.2rem;
     color: #ccc;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.2rem; /* Larger font size */
 }
 
 /* Campos de entrada */
@@ -44,13 +49,13 @@ body {
 .registro-container input[type="email"],
 .registro-container input[type="password"] {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+    padding: 12px; /* Increased padding */
+    margin-top: 6px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px; /* Slightly larger border-radius */
     background-color: #2c2c2c;
     color: #f1f1f1;
-    font-size: 1rem;
+    font-size: 1.2rem; /* Larger font size */
 }
 
 .registro-container input:focus {
@@ -61,35 +66,55 @@ body {
 /* Botón de acción */
 .btn-registrar {
     width: 100%;
-    margin-top: 1.8rem;
-    padding: 12px;
+    margin-top: 2rem; /* Increased spacing */
+    padding: 14px; /* Increased padding */
     background-color: #27ae60;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px; /* Slightly larger border-radius */
     font-weight: bold;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 1rem;
+    font-size: 1.2rem; /* Larger font size */
 }
 
 .btn-registrar:hover {
     background-color: #219150;
 }
 
+/* Botón de volver */
+.btn-volver {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem; /* Slightly increased spacing */
+    padding: 12px; /* Increased padding for consistency */
+    background-color: #2c2c2c;
+    border-radius: 8px; /* Matches other buttons */
+    color: #00acee;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 1.2rem; /* Larger font size */
+}
+
+.btn-volver:hover {
+    background-color: #333;
+    text-decoration: underline;
+}
+
 /* Mensajes de estado */
 .mensaje {
     text-align: center;
-    margin: 1rem 0;
+    margin: 1.2rem 0;
     color: #f1c40f;
-    font-size: 0.95rem;
+    font-size: 1.1rem; /* Larger font size */
 }
 
 /* Enlaces adicionales */
 .enlaces-extra {
     text-align: center;
-    margin-top: 1.5rem;
-    font-size: 0.95rem;
+    margin-top: 1.8rem;
+    font-size: 1.1rem; /* Larger font size */
 }
 
 .enlaces-extra a {
@@ -107,77 +132,62 @@ body {
     .registro-container {
         max-width: 90%;
         margin: 2rem auto;
-        padding: 1.5rem;
+        padding: 2rem; /* Adjusted padding */
     }
 
     .registro-container h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1.2rem;
+        font-size: 1.8rem; /* Adjusted for smaller screens */
+        margin-bottom: 1.5rem;
     }
 
     .registro-container label {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 
     .registro-container input[type="text"],
     .registro-container input[type="email"],
     .registro-container input[type="password"] {
-        padding: 8px;
-        font-size: 0.9rem;
+        padding: 10px;
+        font-size: 1rem;
     }
 
-    .btn-registrar {
-        padding: 10px;
-        font-size: 0.9rem;
+    .btn-registrar,
+    .btn-volver {
+        padding: 12px;
+        font-size: 1rem;
     }
 
     .mensaje,
     .enlaces-extra {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
     }
 }
 
 @media screen and (max-width: 400px) {
     .registro-container {
-        padding: 1rem;
+        padding: 1.5rem;
         margin: 1rem auto;
     }
 
     .registro-container h2 {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
     }
 
     .registro-container label {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
     }
 
     .registro-container input[type="text"],
     .registro-container input[type="email"],
-    .registro-container input[type="password"] {
-        padding: 7px;
-        font-size: 0.85rem;
+    .registro-container input[type="password"],
+    .btn-registrar,
+    .btn-volver {
+        padding: 10px;
+        font-size: 0.95rem;
     }
 
-    .btn-registrar {
-        padding: 8px;
-        font-size: 0.85rem;
+    .mensaje,
+    .enlaces-extra {
+        font-size: 0.9rem;
     }
-}
-.btn-volver {
-    display: block;
-    text-align: center;
-    margin-top: 1.2rem;
-    padding: 10px;
-    background-color: #2c2c2c;
-    border-radius: 6px;
-    color: #00acee;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    font-size: 0.95rem;
-}
-
-.btn-volver:hover {
-    background-color: #333;
-    text-decoration: underline;
 }

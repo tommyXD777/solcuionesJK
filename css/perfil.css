@@ -5,41 +5,49 @@ body {
     color: #f1f1f1;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex; /* Center content */
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
 }
 
 /* Contenedor del perfil */
 .perfil-container {
-    max-width: 500px;
-    margin: 4rem auto;
+    max-width: 600px; /* Increased width for larger appearance */
+    width: 90%; /* Ensures responsiveness */
+    margin: 4rem auto; /* Centers horizontally, maintains vertical spacing */
     background-color: #1e1e1e;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    padding: 2.5rem; /* Increased padding for larger feel */
+    border-radius: 14px; /* Slightly larger border-radius */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
 }
 
 /* Título */
 .perfil-container h2 {
     text-align: center;
     color: #ccc;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem; /* Increased spacing */
+    font-size: 2.2rem; /* Larger font size */
 }
 
 /* Etiquetas y campos */
 .perfil-container label {
     display: block;
-    margin-top: 1rem;
+    margin-top: 1.2rem; /* Increased spacing */
     color: #ccc;
     font-weight: 500;
+    font-size: 1.2rem; /* Larger font size */
 }
 
 .perfil-container input {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+    padding: 12px; /* Increased padding */
+    margin-top: 6px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px; /* Slightly larger border-radius */
     background-color: #2c2c2c;
     color: white;
+    font-size: 1.2rem; /* Larger font size */
 }
 
 .perfil-container input:focus {
@@ -50,27 +58,30 @@ body {
 /* Botón */
 .btn-actualizar {
     width: 100%;
-    margin-top: 1.5rem;
-    padding: 12px;
+    margin-top: 2rem; /* Increased spacing */
+    padding: 14px; /* Increased padding */
     background-color: #27ae60;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px; /* Slightly larger border-radius */
     font-weight: bold;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 1.2rem; /* Larger font size */
 }
 
 .btn-actualizar:hover {
     background-color: #219150;
 }
+
 /* Enlace para volver */
 .link-volver {
     display: inline-block;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem; /* Increased spacing */
     color: #00acee;
     text-decoration: none;
     font-weight: 500;
+    font-size: 1.1rem; /* Larger font size */
     transition: color 0.3s ease;
 }
 
@@ -79,18 +90,80 @@ body {
     text-decoration: underline;
 }
 
-
 /* Mensajes */
 .mensaje {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem; /* Increased spacing */
     color: #f1c40f;
+    font-size: 1.1rem; /* Larger font size */
 }
 
 /* Responsive */
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .perfil-container {
-        margin: 1rem;
+        max-width: 90%;
+        margin: 2rem auto; /* Adjusted margin */
+        padding: 2rem; /* Adjusted padding */
+    }
+
+    .perfil-container h2 {
+        font-size: 1.8rem; /* Adjusted for smaller screens */
+        margin-bottom: 1.5rem;
+    }
+
+    .perfil-container label {
+        font-size: 1rem;
+    }
+
+    .perfil-container input {
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .btn-actualizar {
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    .link-volver {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .mensaje {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .perfil-container {
         padding: 1.5rem;
+        margin: 1rem auto;
+    }
+
+    .perfil-container h2 {
+        font-size: 1.6rem;
+    }
+
+    .perfil-container label {
+        font-size: 0.95rem;
+    }
+
+    .perfil-container input {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .btn-actualizar {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .link-volver {
+        font-size: 0.9rem;
+    }
+
+    .mensaje {
+        font-size: 0.9rem;
     }
 }

@@ -5,84 +5,89 @@ body {
     margin: 0;
     padding: 1rem;
     min-height: 100vh;
+    display: flex; /* Center content */
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
 }
 
 .carrito-container {
-    max-width: 800px;
-    margin: 2rem auto;
+    max-width: 900px; /* Increased width for larger appearance */
+    width: 90%; /* Ensures responsiveness */
+    margin: 2rem auto; /* Centers horizontally, maintains vertical spacing */
     background-color: #1e1e1e;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    padding: 2rem; /* Increased padding for larger feel */
+    border-radius: 14px; /* Slightly larger border-radius */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
 }
 
 .carrito-container h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem;
-    color: #27ae60;
-    margin-bottom: 1.5rem;
+    font-size: 2.2rem; /* Larger font size */
+    color: #f1f1f1;
+    margin-bottom: 2rem; /* Increased spacing */
 }
 
 .carrito-container h2 i {
-    margin-right: 8px;
+    margin-right: 10px; /* Slightly increased for balance */
 }
 
 .table {
     border-collapse: collapse;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 12px; /* Slightly larger border-radius */
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
 }
 
 .table thead th {
     background-color: #2c2c2c;
     color: #00acee;
-    padding: 12px;
+    padding: 14px; /* Increased padding */
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.2rem; /* Larger font size */
     border-bottom: 1px solid #444;
 }
 
 .table tbody td {
     background-color: #1a1a1a;
     color: #f1f1f1;
-    padding: 10px;
+    padding: 12px; /* Increased padding */
     text-align: center;
     border-bottom: 1px solid #333;
     vertical-align: middle;
+    font-size: 1.1rem; /* Larger font size */
 }
 
 .total-carrito {
-    font-size: 1.2rem;
+    font-size: 1.4rem; /* Larger font size */
     font-weight: bold;
-    margin-top: 1rem;
+    margin-top: 1.2rem; /* Increased spacing */
     color: #f1f1f1;
     text-align: right;
     border-top: 2px solid #f1f1f1;
-    padding-top: 10px;
+    padding-top: 12px; /* Increased padding */
 }
 
 .carrito-acciones {
-    margin-top: 1.5rem;
+    margin-top: 2rem; /* Increased spacing */
     display: flex;
     flex-wrap: wrap;
-    gap: 0.8rem;
+    gap: 1rem; /* Increased gap for balance */
     justify-content: center;
 }
 
 .btn-custom {
-    padding: 8px 16px;
+    padding: 10px 20px; /* Increased padding */
     border: none;
-    border-radius: 6px;
+    border-radius: 8px; /* Slightly larger border-radius */
     font-weight: bold;
     color: white;
     text-align: center;
-    min-width: 140px;
+    min-width: 160px; /* Increased width */
     transition: background-color 0.3s ease;
-    font-size: 0.95rem;
+    font-size: 1.1rem; /* Larger font size */
 }
 
 .btn-eliminar {
@@ -130,6 +135,7 @@ a {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
+    font-size: 1.1rem; /* Larger font size */
 }
 
 a:hover {
@@ -138,8 +144,8 @@ a:hover {
 }
 
 a.btn-eliminar {
-    padding: 6px 12px;
-    border-radius: 4px;
+    padding: 8px 14px; /* Increased padding */
+    border-radius: 6px; /* Slightly larger border-radius */
     font-weight: bold;
 }
 
@@ -147,32 +153,32 @@ a.btn-eliminar {
 @media screen and (max-width: 768px) {
     .carrito-container {
         max-width: 95%;
-        padding: 1.2rem;
+        padding: 1.5rem; /* Adjusted padding */
     }
 
     .carrito-container h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1.2rem;
+        font-size: 1.8rem; /* Adjusted for smaller screens */
+        margin-bottom: 1.5rem;
     }
 
     .table thead th {
-        font-size: 0.9rem;
-        padding: 10px;
+        font-size: 1rem;
+        padding: 12px;
     }
 
     .table tbody td {
-        font-size: 0.9rem;
-        padding: 8px;
+        font-size: 1rem;
+        padding: 10px;
     }
 
     .btn-custom {
-        padding: 7px 14px;
-        font-size: 0.9rem;
-        min-width: 120px;
+        padding: 8px 16px;
+        font-size: 1rem;
+        min-width: 140px;
     }
 
     .total-carrito {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 }
 
@@ -182,12 +188,12 @@ a.btn-eliminar {
     }
 
     .carrito-container {
-        padding: 1rem;
+        padding: 1.2rem;
         margin: 1rem auto;
     }
 
     .carrito-container h2 {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
     }
 
     .table thead {
@@ -206,59 +212,59 @@ a.btn-eliminar {
 
     .table td {
         text-align: right;
-        padding: 8px 10px 8px 50%;
+        padding: 10px 12px 10px 50%;
         position: relative;
-        font-size: 0.85rem;
+        font-size: 0.95rem;
     }
 
     .table td::before {
         content: attr(data-label);
         position: absolute;
-        left: 10px;
+        left: 12px;
         color: #888;
         font-weight: bold;
         text-transform: capitalize;
-        font-size: 0.85rem;
+        font-size: 0.95rem;
     }
 
     .btn-custom {
         display: block;
         width: 100%;
-        margin-bottom: 0.8rem;
-        font-size: 0.85rem;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
     }
 
     .carrito-acciones {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.8rem;
     }
 
     .total-carrito {
-        font-size: 1rem;
-        padding-top: 8px;
+        font-size: 1.1rem;
+        padding-top: 10px;
     }
 }
 
 @media screen and (max-width: 400px) {
     .carrito-container {
-        padding: 0.8rem;
+        padding: 1rem;
     }
 
     .carrito-container h2 {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     .table td {
-        font-size: 0.8rem;
-        padding: 6px 8px 6px 45%;
+        font-size: 0.9rem;
+        padding: 8px 10px 8px 45%;
     }
 
     .table td::before {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
 
     .btn-custom {
-        padding: 6px 12px;
-        font-size: 0.8rem;
+        padding: 8px 14px;
+        font-size: 0.9rem;
     }
 }
