@@ -1,16 +1,16 @@
 <?php
-// Obtener variables desde entorno Railway
-$host     = getenv('MYSQLHOST');
-$user     = getenv('MYSQLUSER');
-$password = getenv('MYSQLPASSWORD');
-$database = getenv('MYSQL_DATABASE'); // ✅ nombre exacto
-$port     = getenv('MYSQLPORT');
+$host = "localhost";      // Servidor local
+$usuario = "root";        // Usuario por defecto en XAMPP
+$contrasena = "";         // Contraseña vacía por defecto
+$base_de_datos = "servicios_db"; // Cambia por el nombre de tu base
 
 // Crear la conexión
-$conexion = new mysqli($host, $user, $password, $database, intval($port));
+$conn = new mysqli($host, $usuario, $contrasena, $base_de_datos);
 
 // Verificar conexión
-if ($conexion->connect_error) {
-    die("❌ Conexión fallida: " . $conexion->connect_error);
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+} else {
+    echo "✅ Conexión exitosa a la base de datos.";
 }
 ?>

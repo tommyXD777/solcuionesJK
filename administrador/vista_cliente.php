@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once '../conexion.php'; // Usa la conexión correcta de Railway
+require_once '../conexion.php';
 
-// Consulta SQL
-$sql = "SELECT nombre, apellido, telefono, username, correo FROM clientes";
+// Consulta SQL (ajustada a tu tabla actual)
+$sql = "SELECT correo, username, tipo FROM clientes";
 $resultado = $conexion->query($sql);
 $usuarios = [];
 
@@ -22,7 +22,7 @@ if ($resultado && $resultado->num_rows > 0) {
 </head>
 <body>
 <div class="contenedor-usuarios">
-    <a href="adm.php" class="link-volver">Volver al inicio</a>
+    <a href="adm.php" class="link-volver">← Volver al inicio</a>
     <h2>Usuarios Registrados</h2>
 
     <?php if (empty($usuarios)): ?>
@@ -32,21 +32,17 @@ if ($resultado && $resultado->num_rows > 0) {
     <table class="tabla-usuarios">
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Teléfono</th>
                 <th>Correo</th>
                 <th>Nombre de Usuario</th>
+                <th>Tipo</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($usuarios as $user): ?>
             <tr>
-                <td data-label="Nombre"><?= htmlspecialchars($user['nombre']) ?></td>
-                <td data-label="Apellido"><?= htmlspecialchars($user['apellido']) ?></td>
-                <td data-label="Teléfono"><?= htmlspecialchars($user['telefono']) ?></td>
                 <td data-label="Correo"><?= htmlspecialchars($user['correo']) ?></td>
                 <td data-label="Nombre de Usuario"><?= htmlspecialchars($user['username']) ?></td>
+                <td data-label="Tipo"><?= htmlspecialchars($user['tipo']) ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
