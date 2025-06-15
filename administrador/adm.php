@@ -113,7 +113,7 @@ $servicios = $conexion->query("SELECT * FROM servicios");
                 const id = this.dataset.id;
                 const nuevo_precio = this.querySelector('input[name="nuevo_precio"]').value;
                 const mensajeDiv = document.getElementById('mensaje-' + id);
-                fetch('/solcuionesJK/crud/editar_precio.php', {
+                fetch('/crud/editar_precio.php', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     body: `id=${id}&nuevo_precio=${nuevo_precio}`
