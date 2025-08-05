@@ -1,10 +1,11 @@
 <?php
 // Obtener variables desde entorno Railway
-$host     = getenv('MYSQLHOST');
-$user     = getenv('MYSQLUSER');
+$host = getenv('MYSQLHOST');
+$user = getenv('MYSQLUSER');
 $password = getenv('MYSQLPASSWORD');
-$database = getenv('MYSQL_DATABASE'); // ✅ nombre exacto
-$port     = getenv('MYSQLPORT');
+$database = getenv('MYSQL_DATABASE');
+$port = getenv('MYSQLPORT');
+
 
 // Crear la conexión
 $conexion = new mysqli($host, $user, $password, $database, intval($port));
